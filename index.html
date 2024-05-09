@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+/* 清除默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+/* 第一部分 */
+/* 头部导航栏 */
+        .header{
+            position: fixed;
+            margin: 5px auto;
+            width: 1650px;
+            height: 60px;
+            background-color: orange;
+            border-radius: 25px;
+            text-align: center ;
+            z-index: 999;
+            /* 添加相对定位，使得绝对定位的picture将以header选择器做参考 */
+        }
+    /* 导航栏的五个区块 */
+        .headerIntro{
+            position: absolute;
+            width: 330px;
+            height: 60px;
+            top: 0px;
+            left: 0px;
+            background-color: orange;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .headerIntroQr{
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+        }
+        
+        /* Intro区块变色及还原 */
+        .headerIntro:hover{
+            transform: scale(1);
+            transition: transform 0.5s;
+            background-color: #AFAFCF;
+            transition: background-color 0.5s;
+        }
+        .headerIntro:not(:hover) {
+            transition: background-color 0.5s;
+        }
+        .headerAbout{
+            position: absolute;
+            width: 330px;
+            height: 60px;
+            top: 0px;
+            left: 330px;
+            background-color: orange;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+         /* About区块变色及还原 */
+         .headerAbout:hover{
+            transform: scale(1);
+            transition: transform 0.5s;
+            background-color: #AFAFCF;
+            transition: background-color 0.5s;
+        }
+        .headerAbout:not(:hover) {
+            transition: background-color 0.5s;
+        }
+        .headerNew{
+            position: absolute;
+            width: 330px;
+            height: 60px;
+            top: 0px;
+            left: 660px;
+            background-color: orange;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+         /* New区块变色及还原 */
+         .headerNew:hover{
+            transform: scale(1);
+            transition: transform 0.5s;
+            background-color: #AFAFCF;
+            transition: background-color 0.5s;
+        }
+        .headerNew:not(:hover) {
+            transition: background-color 0.5s;
+        }
+        .headerContact{
+            position: absolute;
+            width: 330px;
+            height: 60px;
+            top: 0px;
+            left: 990px;
+            background-color: orange;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+         /* Contact区块变色及还原 */
+         .headerContact:hover{
+            transform: scale(1);
+            transition: transform 0.5s;
+            background-color: #AFAFCF;
+            transition: background-color 0.5s;
+        }
+        .headerContact:not(:hover) {
+            transition: background-color 0.5s;
+        }
+        .headerQa{
+            position: absolute;
+            width: 330px;
+            height: 60px;
+            top: 0px;
+            left: 1320px;
+            background-color: orange;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+         /* Qa区块变色及还原 */
+         .headerQa:hover{
+            transform: scale(1);
+            transition: transform 0.5s;
+            background-color: #AFAFCF;
+            transition: background-color 0.5s;
+        }
+        .headerQa:not(:hover) {
+            transition: background-color 0.5s;
+        }
+    /* 导航栏的导航文字 */
+        .headerItroWorld{
+            position: absolute;
+            color: white;
+            font-size: 35px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 5px;
+            left: 50px;
+        }
+        .headerAboutWorld{
+            position: absolute;
+            color: white;
+            font-size: 35px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 5px;
+            left: 60px;
+        }
+        .headerNewWorld{
+            position: absolute;
+            color: white;
+            font-size: 35px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 5px;
+            left: 45px;
+        }
+        .headerContactWorld{
+            position: absolute;
+            color: white;
+            font-size: 35px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 5px;
+            left: 43px;
+        }
+        .headerQaWorld{
+            position: absolute;
+            color: white;
+            font-size: 35px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 5px;
+            left: 125px;
+        }
+    /* 导航栏图标 */
+        /* 下箭头图标 */
+        .headPicture1{
+            /* 添加绝对定位，使其脱离文档流 */
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 5px; 
+            left: 268px; 
+        }
+        /* 用户图标 */
+        .headPicture2{
+            width: 43px;
+            height: 43px;
+            position: absolute;
+            top: 5px;
+            left: 235px;
+        }
+        /* 房子图标 */
+        .headPicture3{
+            width: 53px;
+            height: 51px;
+            position: absolute;
+            top: 0px;
+            left: 250px;
+        }
+        /* 电话图标 */
+        .headPicture4{
+            width: 43px;
+            height: 43px;
+            position: absolute;
+            top: 6px;
+            left: 240px;
+        }
+        /* 短信图标 */
+        .headPicture5{
+            width: 50px;
+            height: 32px;
+            position: absolute;
+            top: 12px;
+            left: 227px;
+        }
+        /* 程序员图标 */
+        .headerProPic
+        {
+            position: absolute;
+            width: 60px;
+            height: 53px;
+            top: 5px;
+            left: 45px;
+        }
+        .headerProPic:hover{
+            transform: rotate(360deg);
+            transition: transform 1s;
+        }
+        .headerProPic:not(:hover){
+            transform: rotate(0);
+            transition: transform 1s;
+        }
+
+/* 第二部分 */
+/* 团队部分 */
+        .team{
+            width: 1650px;
+            height: 400px;
+            /* 图片缩放为原来的95%,图片水平平移50px，垂直平移20px */
+            transform: scale(0.88) translate(-99px, -20px);
+            position: relative;
+        }
+        /* Geek图标部分 */
+        .GeekPicture{
+            position: absolute;
+            width: 600px;
+            height: 300px;
+            top: 30%;
+            left: 650px;
+        }
+        /* 区块放大缩小 */
+        .GeekPicture:hover{
+            transform: scale(1.3);
+            transition: transform 0.5s;
+        }
+        .GeekPicture:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+
+/* 第三部分 */
+/* 内容细节部分 */
+/* 第一区块：职位介绍部分 */
+        .Position{
+            width: 1000px;
+            height: 200px;
+            position: relative;
+        }
+        /* 两侧的装饰 */
+        .PositionPic{
+            width: 1650px;
+            height: 250px;
+            position: absolute;
+            transform: scale(1) translate(25px, 720px);
+        }
+        /* Introduction单词 */
+        .PositionIntro{
+            color: blue;
+            font-size: 65px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            position: absolute;
+            top: 810px;
+            left: 62%;
+        }
+        /* Intro后面的下箭头图标 */
+        .PositionSmall{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            transform: scale(1) translate(1050px, 840px);
+        }
+
+    /* 开发程序员部分 */
+        /* 开发程序员介绍部分 */
+        .PositionProgrammer{
+            width: 1350px;
+            height: 600px;
+            background-color: white;
+            position: absolute;
+            top: 1420px;
+            left: 11%;
+            border: 7px solid gray;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+        .PositionProPic{
+            width: 400px;
+            height: 500px;
+            position: absolute;
+            top: 30px;
+            left: 880px;
+        }
+        /* 图片逆时针旋转、还原 */
+        .PositionProPic:hover{
+            transform: rotate(-10deg);
+            transition: transform 0.5s;
+        }
+        .PositionProPic:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+        /* 区块放大缩小 */
+        .PositionProgrammer:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .PositionProgrammer:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        /* 开发程序员文字介绍 */
+        .PositionProWorld1{
+            position: absolute;
+            color: black;
+            font-size: 65px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 40px;
+            left: 40px;
+        }
+        .PositionProWorld2{
+            position: absolute;
+            color: 	#0066FF;
+            font-size: 50px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 150px;
+            left: 40px;
+        }
+        .PositionProWorld3{
+            position: absolute;
+            color: black;
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 260px;
+            left: 40px;
+        }
+
+    /* 产品经理部分 */
+        /* 产品经理介绍部分 */
+        .PositionProduct{
+            position: relative;
+            width: 1350px;
+            height: 600px;
+            background-color: white;
+            top: 1480px;
+            left: 11%;
+            border: 7px solid gray;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+        .PositionProdPic{
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            top: 35px;
+            left: 50px;
+        }
+        /* 图片旋转、还原 */
+        .PositionProdPic:hover{
+            transform: rotate(10deg);
+            transition: transform 0.5s;
+        }
+        .PositionProdPic:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+        /* 区块放大缩小 */
+        .PositionProduct:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .PositionProduct:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        /* 产品经理文字介绍部分 */
+        .PositionProdWorld1{
+            position: absolute;
+            color: black;
+            font-size: 65px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 40px;
+            left: 550px;
+        }
+        .PositionProdWorld2{
+            position: absolute;
+            color: 	#9955FF ;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 150px;
+            left: 550px;
+        }
+        .PositionProdWorld3{
+            position: absolute;
+            color: black;
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 290px;
+            left: 500px;
+        }
+
+    /* 游戏开发部分 */
+        .PositionGame{
+            position: relative;
+            width: 1350px;
+            height: 600px;
+            background-color: white;
+            top: 1530px;
+            left: 11%;
+            border: 7px solid gray;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+        .PositionGamePic{
+            position: absolute;
+            width: 430px;
+            height: 570px;
+            top: 5px;
+            left: 900px;
+        }
+        /* 图片旋转、还原 */
+        .PositionGamePic:hover{
+            transform: rotate(-10deg);
+            transition: transform 0.5s;
+        }
+        .PositionGamePic:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+        /* 区块放大缩小 */
+        .PositionGame:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .PositionGame:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        /* 游戏开发文字介绍部分 */
+        .PositionGameWorld1{
+            position: absolute;
+            color: black;
+            font-size: 65px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 40px;
+            left: 40px;
+        }
+        .PositionGameWorld2{
+            position: absolute;
+            color: 	#66FF66;
+            font-size: 50px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 190px;
+            left: 40px;
+        }
+        .PositionGameWorld3{
+            position: absolute;
+            color: black;
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 320px;
+            left: 40px;
+        }
+
+    /* 游戏美术部分 */
+        .PositionArt{
+            position: relative;
+            width: 1350px;
+            height: 600px;
+            background-color: white;
+            top: 1580px;
+            left: 11%;
+            border: 7px solid gray;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+        .PositionArtPic{
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            top: 35px;
+            left: 50px;
+        }
+        /* 图片旋转、还原 */
+        .PositionArtPic:hover{
+            transform: rotate(10deg);
+            transition: transform 0.5s;
+        }
+        .PositionArtPic:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+        /* 区块放大缩小 */
+        .PositionArt:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .PositionArt:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        /* 游戏美术文字介绍部分 */
+        .PositionArtWorld1{
+            position: absolute;
+            color: black;
+            font-size: 65px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 40px;
+            left: 550px;
+        }
+        .PositionArtWorld2{
+            position: absolute;
+            color: 	#FF88C2;
+            font-size: 40px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 150px;
+            left: 550px;
+        }
+        .PositionArtWorld3{
+            position: absolute;
+            color: black;
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 250px;
+            left: 500px;
+        }
+        /* 网络安全部分 */
+        .PositionSecurity{
+            position: relative;
+            width: 1350px;
+            height: 600px;
+            background-color: white;
+            top: 1630px;
+            left: 11%;
+            border: 7px solid gray;
+            border-radius: 25px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+        }
+        .PositionSecPic{
+            position: absolute;
+            width: 400px;
+            height: 510px;
+            top: 35px;
+            left: 900px;
+        }
+        /* 网络安全文字介绍部分 */
+        .PositionSecWorld1{
+            position: absolute;
+            color: black;
+            font-size: 65px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 40px;
+            left: 40px;
+        }
+        .PositionSecWorld2{
+            position: absolute;
+            color: #BDB76B;
+            font-size: 50px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 190px;
+            left: 40px;
+        }
+        .PositionSecWorld3{
+            position: absolute;
+            color: black;
+            font-size: 30px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 320px;
+            left: 40px;
+        }
+        /* 图片旋转、还原 */
+        .PositionSecPic:hover{
+            transform: rotate(-10deg);
+            transition: transform 0.5s;
+        }
+        .PositionSecPic:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+        /* 区块放大缩小 */
+        .PositionSecurity:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .PositionSecurity:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        
+/* 第二区块：了解、联系、问答 */
+/* 了解分区 */
+        .About{
+            position: relative;
+            width: 1500px;
+            height: 200px;
+        }
+        .AboutBox{
+            position: absolute;
+            width: 1500px;
+            height: 800px;
+            background-color: #FFFAF0 ;
+            top: 1700px;
+            left: 7.3%;
+            border: 13px solid gray;
+            border-radius: 20px;
+        }
+        /* About四个角的装饰 */
+        .AboutDecRu{
+            position: absolute;
+            width: 260px;
+            height: 100px;
+            transform: scale(1) translate(1283px, -30px);
+        }
+        .AboutDecRd{
+            position: absolute;
+            width: 260px;
+            height: 100px;
+            transform: scale(1) translate(1283px, 676px);
+        }
+        .AboutDecLu{
+            position: absolute;
+            width: 260px;
+            height: 100px;
+            transform: scale(1) translate(-68px, -30px);
+        }
+        .AboutDecLd{
+            position: absolute;
+            width: 260px;
+            height: 100px;
+            transform: scale(1) translate(-68px, 676px);
+        }
+        /* About蝴蝶装饰 */
+        .AboutButter{
+            position: absolute;
+            width: 170px;
+            height: 250px;
+            top: 485px;
+            left: 1355px;
+        }
+        /* 蝴蝶向下移动及还原 */
+        .AboutButter:hover{
+            transition: transform 0.5s;
+            transform: translateY(20px);
+        }
+        .AboutButter:not(:hover) {
+            transition: transform 0.5s;
+            transform: translateY(0);
+        }
+            
+        /* About头标题的小图标 */
+        .AboutTeam{
+            position: absolute;
+            width: 100px;
+            height: 110px;
+            transform: scale(1) translate(950px, 25px);
+        }
+
+    /* 三个小区块构建 */
+        .AboutBlockMid{
+            position: absolute;
+            width: 312px;
+            height: 500px;
+            top: 200px;
+            left: 580px;
+            border: 10px solid #800080 ;
+            border-radius: 20px;
+        }
+        /* 区块放大缩小 */
+        .AboutBlockMid:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .AboutBlockMid:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        .AboutBlockLf{
+            position: absolute;
+            width: 312px;
+            height: 450px;
+            top: 200px;
+            left: 130px;
+            border: 10px solid #800080 ;
+            border-radius: 20px;
+        }
+        /* 区块放大缩小 */
+        .AboutBlockLf:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .AboutBlockLf:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+        .AboutBlockRi{
+            position: absolute;
+            width: 312px;
+            height: 450px;
+            top: 200px;
+            left: 1025px;
+            border: 10px solid #800080 ;
+            border-radius: 20px;
+        }
+        /* 区块放大缩小 */
+        .AboutBlockRi:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+        }
+        .AboutBlockRi:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+        }
+
+    /* About三个区块的图标 */
+        .AboutBlockPicMid{
+            position: absolute;
+            width: 150px;
+            height: 210px;
+            transform: scale(1) translate(70px, 2px);
+        }
+        .AboutBlockPicLf{
+            position: absolute;
+            width: 130px;
+            height: 180px;
+            transform: scale(1) translate(75px, 20px);
+        }
+        .AboutBlockPicRi{
+            position: absolute;
+            width: 130px;
+            height: 180px;
+            transform: scale(1) translate(75px, 20px);
+        }
+
+    /* About文字介绍部分 */
+        /* 头标题 */
+        .AboutTitle{
+            position: absolute;
+            color: gray;
+            font-size: 100px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 10px;
+            left: 430px;
+        }
+        /* 第一小块文字介绍 */
+        .AboutWorldMid{
+            position: absolute;
+            color: black;
+            font-size: 27px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 230px;
+            left: 21px;
+        }
+        /* 第二小块文字介绍 */
+        .AboutWorldLf{
+            position: absolute;
+            color: black;
+            font-size: 27px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 225px;
+            left: 30px;
+        }
+        /* 第三小块文字介绍 */
+        .AboutWorldRi{
+            position: absolute;
+            color: black;
+            font-size: 27px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 225px;
+            left: 30px;
+        }
+
+/* 联系分区 */
+        .Contact{
+            position: relative;
+            width: 1500px;
+            height: 200px;
+        }
+        .ContactBox{
+            position: absolute;
+            width: 1450px;
+            height: 800px;
+            background-color: white ;
+            top: 2370px;
+            left: 9.3%;
+            border: 13px solid 	#008080;
+            border-radius: 20px;
+        }
+
+    /* Contact区块图片装饰 */
+        /* 左侧的树干 */
+        .ContactTreeLf{
+            position: absolute;
+            width: 300px;
+            height: 400px;
+            transform: scale(1) translate(150px, 2330px);
+        }
+        /* 右侧的树干 */
+        .ContactTreeRi{
+            position: absolute;
+            width: 230px;
+            height: 830px;
+            transform: scale(1) translate(1395px, 2370px);
+        }
+        /* 下面的蜥蜴 */
+        .ContactLizard{
+            position: absolute;
+            width: 620px;
+            height: 320px;
+            transform: scale(1) translate(800px, 2895px);
+        }
+        /* 左下角的七星瓢虫 */
+        .ContactSeven{
+            position: absolute;
+            width: 130px;
+            height: 150px;
+            transform: scale(1) translate(130px, 3050px);
+        }
+        /* 上面的叶子 */
+        .ContactLeaves{
+            position: absolute;
+            width: 130px;
+            height: 110px;
+            top: 2395px;
+            left: 500px;
+        }
+        .ContactLeaves:hover{
+            transform: rotate(10deg);
+            transition: transform 0.5s;
+        }
+        .ContactLeaves:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+        /* Contact Us 后面的电话图标 */
+        .ContactTel{
+            position: absolute;
+            width: 120px;
+            height: 140px;
+            top: 2375px;
+            left: 1080px;
+            cursor: pointer;
+        }
+        .ContactTel:hover{
+            transform: rotate(-10deg);
+            transition: transform 0.5s;
+        }
+        .ContactTel:not(:hover){
+            transform: rotate(0);
+            transition: transform 0.5s;
+        }
+
+    /* Contact文字介绍部分 */
+        /* 头标题 */
+        .ContactTitle{
+            position: absolute;
+            color: #2F4F4F;
+            font-size: 80px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 2400px;
+            left: 650px;
+        }
+        .ContactWorld1{
+            position: absolute;
+            color: black;
+            font-size: 33px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 2560px;
+            left: 470px;
+            line-height: 2;
+        }
+        .ContactWorld2{
+            position: absolute;
+            color: gray;
+            font-size: 25px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 2800px;
+            left: 470px;
+        }
+    /* 底部区域的三个链接：qq、Email、Github */
+        /* 三个盒子 */
+        .ContactBoxQq{
+            position: absolute;
+            width: 180px;
+            height: 80px;
+            background-color: #228B22  ;
+            top: 2965px;
+            left: 470px;
+            border: 1px solid 	#008080;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        /* QQ区块放大、还原、变色 */
+        .ContactBoxQq:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+            background-color: #202020;
+            transition: background-color 0.3s;
+        }
+        .ContactBoxQq:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+            transition: background-color 0.3s;
+        }
+        .ContactBoxEmail{
+            position: absolute;
+            width: 180px;
+            height: 80px;
+            background-color: #228B22  ;
+            top: 2965px;
+            left: 765px;
+            border: 1px solid 	#008080;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        /* Email区块放大、还原、变色 */
+        .ContactBoxEmail:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+            background-color: #202020;
+            transition: background-color 0.3s;
+        }
+        .ContactBoxEmail:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+            transition: background-color 0.3s;
+        }
+        .ContactBoxGit{
+            position: absolute;
+            width: 180px;
+            height: 80px;
+            background-color: #228B22  ;
+            top: 2965px;
+            left: 1050px;
+            border: 1px solid 	#008080;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+        /* Github区块放大、还原、变色 */
+        .ContactBoxGit:hover{
+            transform: scale(1.1);
+            transition: transform 0.5s;
+            background-color: #202020;
+            transition: background-color 0.3s;
+        }
+        .ContactBoxGit:not(:hover) {
+            transform: scale(1);
+            transition: transform 0.5s;
+            transition: background-color 0.3s;
+        }
+        /* 三个盒子的图标 */
+        .ContactQqPic{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 20px;
+            left: 130px;
+        }
+        .ContactEmailPic{
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            top: 16px;
+            left: 110px;
+        }
+        .ContactGitPic{
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            top: 17px;
+            left: 110px;
+        }
+
+        /* 三个盒子文字 */
+        .ContactQqWorld{
+            position: absolute;
+            color: white;
+            font-size: 23px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 25px;
+            left: 5px;
+        }
+        .ContactEmailWorld{
+            position: absolute;
+            color: white;
+            font-size: 23px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 25px;
+            left: 30px;
+        }
+        .ContactGitWorld{
+            position: absolute;
+            color: white;
+            font-size: 23px;
+            font-weight: 400;
+            font-family: 微软雅黑;
+            top: 25px;
+            left: 23px;
+        }
+
+/* 问答分区 */
+        .Answer{
+            position: relative;
+            width: 1500px;
+            height: 200px;
+        }
+        /* 问答的背景图及图标 */
+        .AnswerPic{
+            position: absolute;
+            width: 1500px;
+            height: 800px;
+            top: 3100px;
+            left: 7.3%;
+            border: 13px solid #0060BF	;
+            border-radius: 20px;
+        }
+        .AnswerTitlePic{
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            top: 3150px;
+            left: 1150px;
+        }
+
+        /* 问答的文字区块 */
+        .AnswerTitle{
+            position: absolute;
+            color: black;
+            font-size: 80px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3150px;
+            left: 470px;
+        }
+        .Question1{
+            position: absolute;
+            cursor: pointer;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3300px;
+            left: 470px;
+        }
+        .AnswerAll{
+            display: none;
+            background-color: lightgreen;
+            padding: 10px;
+        }
+        .Question2{
+            position: absolute;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3375px;
+            left: 470px;
+        }
+        .Question3{
+            position: absolute;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3450px;
+            left: 470px;
+        }
+        .Question4{
+            position: absolute;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3525px;
+            left: 470px;
+        }
+        .Question5{
+            position: absolute;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3600px;
+            left: 470px;
+        }
+        .Question6{
+            position: absolute;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3675px;
+            left: 470px;
+        }
+        .Question7{
+            position: absolute;
+            color: black;
+            font-size: 32px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            top: 3750px;
+            left: 470px;
+        }
+
+/* 第四部分 */
+/* 备案部分 */
+        .Bottom{
+            position: relative;
+            width: 100%;
+            height: 200px;
+        }
+        .BottomBox{
+            position: absolute;
+            width: 100%;
+            height: 130px;
+            top: 3830px;
+            left: 0;
+            background-color: rgba(128, 128, 128, 0.1);
+            border-top: 1px solid black;
+        }
+        /* 备案文字部分 */
+        .BottomWorld{
+            position: absolute;
+            color: black;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: Helvetica;
+            top: 3860px;
+            left: 530px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="headerIntro" onclick="toggleImage()">
+        <div class="headerItroWorld">Introduction</div>
+        <img  class="headerIntroQr" src="./images/QRcode.png" alt="">
+        <img src="./iconfont/下箭头白色.png" alt="" class="headPicture1">
+        <script>
+            function toggleImage() {
+              var imageElement = document.querySelector('.AnswerImage');
+              var imageStyle = window.getComputedStyle(imageElement);
+          
+              if (imageStyle.display === 'none') {
+                imageElement.style.display = 'block';
+              } else {
+                imageElement.style.display = 'none';
+              }
+            }
+          </script>
+    </div>
+    <div class="headerAbout">
+        <div class="headerAboutWorld">About Us</div>
+        <img src="./iconfont/用户（白色）.png" alt="" class="headPicture2">
+    </div>
+    <div class="headerNew" onclick="openNew()">
+        <div class="headerNewWorld">NewThread</div>
+        <img src="./iconfont/房子.png" alt="" class="headPicture3">
+        <script>
+            function openNew() {
+              window.open("https://campus.new-thread.com", "_blank");
+            }
+        </script>
+    </div>
+    <div class="headerContact" >
+        <div class="headerContactWorld">Contact Us</div>
+        <img src="./iconfont/电话白色.png" alt="" class="headPicture4">
+    </div>
+    <div class="headerQa">
+        <div class="headerQaWorld">Q&A</div>
+        <img src="./iconfont/短信.png" alt="" class="headPicture5">
+        <img src="./iconfont/程序员.png" alt="" class="headerProPic">
+    </div>
+</div>
+<div class="team">
+    <img src="./images/decoration_Geek.png" alt="" class="GeekPicture">
+    <img src="./images/background_Homepage.png" alt="">
+</div>
+<div class="Position">
+    <img src="./images/decoration_Transition.png" alt="" class="PositionPic">
+    <div class="PositionIntro">Introduction</div>
+    <img src="./iconfont/向下-copy-copy.png" alt="" class="PositionSmall">
+</div>
+<div class="PositionProgrammer">
+    <img src="./images/Geek_Programmer.png" alt="" class="PositionProPic">
+    <div class="PositionProWorld1">开发程序猿</div>
+    <div class="PositionProWorld2">"Stay Hungry,Stay Foolish"</div>
+    <div class="PositionProWorld3">&emsp;&emsp;前端：前端开发是创建Web或app视觉界面呈现给用户<br>的过程通过HTML，CSS及JavaScript以及衍生出来的各种技<br>术、框架、解决方案，实现互联网产品的用户界面交互。
+<br>&emsp;&emsp;后端：通常也称服务器端开发。不对用户显示,负责处理<br>前端的请求，进行逻辑处理和数据交互。 <br>&emsp;&emsp;客户端: 移动应用开发是为了小型、无线计算设备编写软<br>件的流程和程序的集合，例如智能手机或平板电脑。</div>
+</div>
+<div class="PositionProduct">
+    <img src="./images/Geek_PM.png" alt="" class="PositionProdPic">
+    <div class="PositionProdWorld1">产品经理</div>
+    <div class="PositionProdWorld2">"好的软件的特征是,明明没用过，但总觉得用过似的。"</div>
+    <div class="PositionProdWorld3">&emsp;&emsp;PM是针对某一项或是某一类的产品进行规划和管理的人员。PM需要拥有缜密的产品逻辑思维，研究用户心理，负责<br>产品的整个生命周期。PM参与产品的UI和交互设计，为设计<br>和开发确定产品原型，能够将产品变得有个性,操作变得舒适<br>简单、自由。 PM需要一定的文档能力和沟通能力，能够在团<br>队合作的过程中跟各个角色进行有效沟通。</div>
+</div>
+<div class="PositionGame">
+    <img src="./images/Geek_Game.png" alt="" class="PositionGamePic">
+    <div class="PositionGameWorld1">游戏开发</div>
+    <div class="PositionGameWorld2">"TECH OTAKUS SAVE THE WORLD"</div>
+    <div class="PositionGameWorld3">&emsp;&emsp;对游戏开发的热爱和追求，使我们相聚于此。涉及计算机图<br>形学的学习，我们使用物理模拟引擎Unity开发我们所追求的世界，<br>一个故事，一个角色，在我们的世界里改变现实，创造新的可能，<br>我们参与，我们改变，我们创造...</div>
+</div>
+<div class="PositionArt">
+    <img src="./images/Geek_Designer.png" alt="" class="PositionArtPic">
+    <div class="PositionArtWorld1">游戏美术</div>
+    <div class="PositionArtWorld2">"路漫漫其修远兮，非大毅力者不能"</div>
+    <div class="PositionArtWorld3">&emsp;&emsp;通俗的说法是游戏中所能看到的一切画面都属于游戏美术，其中包括了角色、UI、场景、道具、动画、特效等。CG<br>艺术的一个分支：游戏美术。游戏美术是游戏制作的重要部<br>分的，通过各种软件引擎和技术技巧，完成相应的部分游戏制作， 各个不同岗位的游戏美术师们通力合作，才能完成一部<br>完整的游戏。</div>
+</div>
+<div class="PositionSecurity">
+    <img src="./images/Geek_security.png" alt="" class="PositionSecPic">
+    <div class="PositionSecWorld1">网络安全</div>
+    <div class="PositionSecWorld2">"安全是一种过程，而不是一种状态"</div>
+    <div class="PositionSecWorld3">&emsp;&emsp;网络安全是一种综合性的概念，指的是保护计算机系统、网<br>络和数据免受未经授权的访问、损坏、干扰或盗窃的威胁和攻击。<br>它涵盖了一系列措施和实践，旨在确保信息的机密性、完整性和<br>可用性。</div>
+</div>
+
+<!-- About区块 -->
+<div class="About">
+    <div class="AboutBox">
+    <img src="./images/decoration_Decoration_Right_up.png" alt="" class="AboutDecRu">
+    <img src="./images/decoration_Decoration_Right_down.png" alt="" class="AboutDecRd">
+    <img src="./images/decoration_Decoration_Left_up.png" alt="" class="AboutDecLu">
+    <img src="./images/decoration_Decoration_Left_down.png" alt="" class="AboutDecLd">
+    <img src="./images/decoration_Butterfly.png" alt="" class="AboutButter">
+    <img src="./iconfont/项目承揽.png" alt="" class="AboutTeam">
+    <div class="AboutTitle">About Us</div>
+    <div class="AboutBlockMid">
+        <img src="./images/about_Diversity.png" alt="" class="AboutBlockPicMid">
+        <div class="AboutWorldMid">多元化是我们的特色。<br>在这里，你可以拥有<br>多种方向选择，前后<br>端、安全、AI、产品<br>/设计、游戏等。</div>
+    </div>
+    <div class="AboutBlockLf">
+        <img src="./images/about_Speech.png" alt="" class="AboutBlockPicLf">
+        <div class="AboutWorldLf">每周我们会举行一次技术例会，用来汇报我们的学习内容，供成员之间交流学习。</div>
+    </div>
+    <div class="AboutBlockRi">
+        <img src="./images/about_Time.png" alt="" class="AboutBlockPicRi">
+        <div class="AboutWorldRi">耐心、毅力是我们必备的品质，每周我们会至少花30小时在实验室中。以保证技术的精进。</div>
+    </div>
+    </div>
+</div>
+
+<!-- Contact区块 -->
+<div class="Contact">
+    <div class="ContactBox"></div>
+    <img src="./images/decoration_TreeWithSometing.png" alt="" class="ContactTreeLf">
+    <img src="./images/decoration_Tree.png" alt="" class="ContactTreeRi">
+    <img src="./images/decoration_Chameleon.png" alt="" class="ContactLizard">
+    <img src="./images/decoration_Ladybug.png" alt="" class="ContactSeven">
+    <img src="./images/decoration_Leaves.png" alt="" class="ContactLeaves">
+    <img src="./iconfont/icon-phone.png" alt="" class="ContactTel">
+    <div class="ContactTitle">Contact Us</div>
+    <div class="ContactWorld1">•热爱计算机，具有geek精神，喜欢DIY，动手能力较强<br>•有编程/算法/硬件基础为佳(有作品可附上)<br>•有足够的空余时间，热爱思考，对事物有自己的见解</div>
+    <div class="ContactWorld2">ps:非新思路统招只有通过发送邮件自我介绍后，收到邮件回执后才会<br>被允许进群,在读学生, 都可邮件到newthread_geek@outlook.com<br>报名加入.(信中需备注个人基本信息以及意向方向,此招新活动为长期招新)</div>
+    <div class="ContactBoxQq" onclick="copyToClipboardQq('522632178')">
+        <div class="ContactQqWorld">QQ-Group</div>
+        <img src="./iconfont/QQ白色.png" alt="" class="ContactQqPic">
+    </div>
+    <script>
+        function copyToClipboardQq(text) {
+          const textField = document.createElement('textarea');
+          textField.innerText = text;
+          document.body.appendChild(textField);
+          textField.select();
+          document.execCommand('copy');
+          textField.remove();
+          window.alert('QQ号码已复制成功☺︎：' + text);
+        }
+    </script>
+    <div class="ContactBoxEmail" onclick="copyToClipboardEmail('522632178@qq.com')">
+        <div class="ContactEmailWorld">E-mail</div>
+        <img src="./iconfont/信封.png" alt="" class="ContactEmailPic">
+    </div>
+    <script>
+        function copyToClipboardEmail(text) {
+          const textField = document.createElement('textarea');
+          textField.innerText = text;
+          document.body.appendChild(textField);
+          textField.select();
+          document.execCommand('copy');
+          textField.remove();
+          window.alert('QQ邮箱已复制成功☺︎：' + text);
+        }
+    </script>
+    <div class="ContactBoxGit" onclick="openGit()">
+        <div class="ContactGitWorld">Github</div>
+        <img src="./iconfont/mark-github.png" alt="" class="ContactGitPic">
+        <script>
+            function openGit() {
+              window.open("https://www.bilibili.com/video/BV1GJ411x7h7/?spm_id_from=333.337.search-card.all.click&vd_source=be2d49d637a41e45dcca97777ce72beb", "_blank");
+            }
+        </script>
+    </div>
+</div>
+
+<!-- Answer区块 -->
+<div class="Answer">
+    <img src="./images/background_QA.png" alt="" class="AnswerPic">
+    <img src="./iconfont/信息.png" alt="" class="AnswerTitlePic">
+    <div class="AnswerTitle">More Questions</div>
+    
+    <div id="question1" class="Question1" onclick="toggleAnswer('question1')">1.什么是Geek(极客)？Geek精神又是什么？</div>
+
+    <!--  
+    <div class="AnswerAll" id="AnswerAll-question1">拥有好奇之心，改变之力，爱钻研，能折腾。</div>
+    <script>
+    function toggleAnswer(questionId) {
+        var answerElement = document.getElementById('AnswerAll-' + questionId);
+        var answerStyle = window.getComputedStyle(answerElement);
+
+        if (answerStyle.display === 'none') {
+        answerElement.style.display = 'block';
+        } else {
+        answerElement.style.display = 'none';
+        }
+    }
+    </script>
+    -->
+    
+    <div class="Question2">2.招新是安排在什么时间？</div>
+    <div class="Question3">3.我们有考核吗？考核流程是怎样的呀？</div>
+    <div class="Question4">4.考核是怎样的形式？</div>
+    <div class="Question5">5.进入Geek组之后都有什么福利呢？</div>
+    <div class="Question6">6.进入团队会影响我的日常学习吗？</div>
+    <div class="Question7">7.老师以及学长学姐们的期望是什么?</div>
+</div>
+
+<!-- 备案部分 -->
+<div class="Bottom">
+    <div class="BottomBox"></div>
+    <div class="BottomWorld">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[prentending this is true⌨]<br>Copyright©2002-2022 itaweya.github.io All Right Reserved 备案号：110</div>
+</div>
+</body>
+</html>
