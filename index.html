@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -63,7 +61,7 @@
             border-radius: 25px;
             cursor: pointer;
         }
-         /* About区块变色及还原 */
+        /* About区块变色及还原 */
          .headerAbout:hover{
             transform: scale(1);
             transition: transform 0.5s;
@@ -188,6 +186,26 @@
             height: 50px;
             top: 5px; 
             left: 268px; 
+            transition: transform 0.5s;
+        }
+        .headPicture1.rotate {
+            transform: rotate(180deg);
+        }
+        /* Intro下方显示二维码 */
+        .bottomPicture {
+            display: none;
+            position: absolute;
+            width: 320px;
+            height: 250px;
+            top: 60px;
+            left: 168px;
+            border: 5px solid orange;
+            border-radius: 30px;
+            transform: translateX(-50%);
+        }
+
+        .show {
+            display: block;
         }
         /* 用户图标 */
         .headPicture2{
@@ -1062,100 +1080,52 @@
         .AnswerPic{
             position: absolute;
             width: 1500px;
-            height: 800px;
-            top: 3100px;
+            top: 3150px;
             left: 7.3%;
             border: 13px solid #0060BF	;
             border-radius: 20px;
+            background-image: url(./images/background_QA.png);
         }
         .AnswerTitlePic{
             position: absolute;
-            width: 110px;
-            height: 110px;
-            top: 3150px;
-            left: 1150px;
+            width: 90px;
+            height: 90px;
+            top: 3160px;
+            left: 1120px;
         }
 
         /* 问答的文字区块 */
         .AnswerTitle{
             position: absolute;
             color: black;
-            font-size: 80px;
+            font-size: 75px;
             font-weight: 700;
             font-family: 微软雅黑;
             top: 3150px;
-            left: 470px;
-        }
-        .Question1{
-            position: absolute;
-            cursor: pointer;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3300px;
-            left: 470px;
-        }
-        .AnswerAll{
-            display: none;
-            background-color: lightgreen;
-            padding: 10px;
-        }
-        .Question2{
-            position: absolute;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3375px;
-            left: 470px;
-        }
-        .Question3{
-            position: absolute;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3450px;
-            left: 470px;
-        }
-        .Question4{
-            position: absolute;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3525px;
-            left: 470px;
-        }
-        .Question5{
-            position: absolute;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3600px;
-            left: 470px;
-        }
-        .Question6{
-            position: absolute;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3675px;
-            left: 470px;
-        }
-        .Question7{
-            position: absolute;
-            color: black;
-            font-size: 32px;
-            font-weight: 700;
-            font-family: 微软雅黑;
-            top: 3750px;
-            left: 470px;
+            left: 500px;
         }
 
+        .Question {
+            cursor: pointer;
+            color: black;
+            font-size: 38px;
+            font-weight: 700;
+            font-family: 微软雅黑;
+            line-height: 1;
+            margin-top: 130px;
+            margin-left: 350px;
+            margin-bottom: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .show-text {
+            margin-top: 30px;
+        }
+
+        
 /* 第四部分 */
 /* 备案部分 */
         .Bottom{
@@ -1165,9 +1135,9 @@
         }
         .BottomBox{
             position: absolute;
-            width: 100%;
+            width: 112.7%;
             height: 130px;
-            top: 3830px;
+            top: 4500px;
             left: 0;
             background-color: rgba(128, 128, 128, 0.1);
             border-top: 1px solid black;
@@ -1179,7 +1149,7 @@
             font-size: 20px;
             font-weight: 700;
             font-family: Helvetica;
-            top: 3860px;
+            top: 4550px;
             left: 530px;
             line-height: 1.8;
         }
@@ -1189,42 +1159,63 @@
 <div class="header">
     <div class="headerIntro" onclick="toggleImage()">
         <div class="headerItroWorld">Introduction</div>
-        <img  class="headerIntroQr" src="./images/QRcode.png" alt="">
-        <img src="./iconfont/下箭头白色.png" alt="" class="headPicture1">
+        <img class="headerIntroQr" src="./images/QRcode.png" alt="">
+        <img id="block" src="./iconfont/下箭头白色.png" alt="" class="headPicture1" onclick="rotateBlock()">
+        <img id="bottomPicture" src="./images/QRcode.png" alt="" class="bottomPicture">
+        <!-- 下方的二维码显示效果 -->
         <script>
-            function toggleImage() {
-              var imageElement = document.querySelector('.AnswerImage');
-              var imageStyle = window.getComputedStyle(imageElement);
-          
-              if (imageStyle.display === 'none') {
-                imageElement.style.display = 'block';
-              } else {
-                imageElement.style.display = 'none';
-              }
+            function rotateBlock() {
+              var block = document.getElementById('block');
+              var bottomPicture = document.getElementById('bottomPicture');
+
+              block.classList.toggle('rotate');
+              bottomPicture.classList.toggle('show');
             }
           </script>
     </div>
-    <div class="headerAbout">
+    <div class="headerAbout" onclick="scrollToAboutBox()">
         <div class="headerAboutWorld">About Us</div>
         <img src="./iconfont/用户（白色）.png" alt="" class="headPicture2">
+        <!-- About滑动效果 -->
+        <script>
+            function scrollToAboutBox() {
+              var aboutBoxElement = document.querySelector('.AboutBox');
+              aboutBoxElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        </script>
     </div>
     <div class="headerNew" onclick="openNew()">
         <div class="headerNewWorld">NewThread</div>
         <img src="./iconfont/房子.png" alt="" class="headPicture3">
+        <!-- 跳转到新网页 -->
         <script>
             function openNew() {
               window.open("https://campus.new-thread.com", "_blank");
             }
         </script>
     </div>
-    <div class="headerContact" >
+    <div class="headerContact" onclick="scrollToContactBox()">
         <div class="headerContactWorld">Contact Us</div>
         <img src="./iconfont/电话白色.png" alt="" class="headPicture4">
+        <!-- Contact滑动效果 -->
+        <script>
+            function scrollToContactBox() {
+              var contactBoxElement = document.querySelector('.ContactBox');
+              contactBoxElement.scrollIntoView({ behavior: 'smooth', block:"center" });
+            }
+        </script>
     </div>
-    <div class="headerQa">
-        <div class="headerQaWorld">Q&A</div>
+    <div class="headerQa" onclick="scrollToAnswerPic()">
+        <div class="headerQaWorld">Q&amp;A</div>
         <img src="./iconfont/短信.png" alt="" class="headPicture5">
         <img src="./iconfont/程序员.png" alt="" class="headerProPic">
+        <!-- Qa滑动效果 -->
+        <script>
+            function scrollToAnswerPic() {
+              var scrollToAnswerPic = document.querySelector('.AnswerPic');
+              scrollToAnswerPic.scrollIntoView({ behavior: 'smooth', block:"center" });
+            }
+        </script>
     </div>
 </div>
 <div class="team">
@@ -1240,32 +1231,32 @@
     <img src="./images/Geek_Programmer.png" alt="" class="PositionProPic">
     <div class="PositionProWorld1">开发程序猿</div>
     <div class="PositionProWorld2">"Stay Hungry,Stay Foolish"</div>
-    <div class="PositionProWorld3">&emsp;&emsp;前端：前端开发是创建Web或app视觉界面呈现给用户<br>的过程通过HTML，CSS及JavaScript以及衍生出来的各种技<br>术、框架、解决方案，实现互联网产品的用户界面交互。
-<br>&emsp;&emsp;后端：通常也称服务器端开发。不对用户显示,负责处理<br>前端的请求，进行逻辑处理和数据交互。 <br>&emsp;&emsp;客户端: 移动应用开发是为了小型、无线计算设备编写软<br>件的流程和程序的集合，例如智能手机或平板电脑。</div>
+    <div class="PositionProWorld3">  前端：前端开发是创建Web或app视觉界面呈现给用户<br>的过程通过HTML，CSS及JavaScript以及衍生出来的各种技<br>术、框架、解决方案，实现互联网产品的用户界面交互。
+<br>  后端：通常也称服务器端开发。不对用户显示,负责处理<br>前端的请求，进行逻辑处理和数据交互。 <br>  客户端: 移动应用开发是为了小型、无线计算设备编写软<br>件的流程和程序的集合，例如智能手机或平板电脑。</div>
 </div>
 <div class="PositionProduct">
     <img src="./images/Geek_PM.png" alt="" class="PositionProdPic">
     <div class="PositionProdWorld1">产品经理</div>
     <div class="PositionProdWorld2">"好的软件的特征是,明明没用过，但总觉得用过似的。"</div>
-    <div class="PositionProdWorld3">&emsp;&emsp;PM是针对某一项或是某一类的产品进行规划和管理的人员。PM需要拥有缜密的产品逻辑思维，研究用户心理，负责<br>产品的整个生命周期。PM参与产品的UI和交互设计，为设计<br>和开发确定产品原型，能够将产品变得有个性,操作变得舒适<br>简单、自由。 PM需要一定的文档能力和沟通能力，能够在团<br>队合作的过程中跟各个角色进行有效沟通。</div>
+    <div class="PositionProdWorld3">  PM是针对某一项或是某一类的产品进行规划和管理的人员。PM需要拥有缜密的产品逻辑思维，研究用户心理，负责<br>产品的整个生命周期。PM参与产品的UI和交互设计，为设计<br>和开发确定产品原型，能够将产品变得有个性,操作变得舒适<br>简单、自由。 PM需要一定的文档能力和沟通能力，能够在团<br>队合作的过程中跟各个角色进行有效沟通。</div>
 </div>
 <div class="PositionGame">
     <img src="./images/Geek_Game.png" alt="" class="PositionGamePic">
     <div class="PositionGameWorld1">游戏开发</div>
     <div class="PositionGameWorld2">"TECH OTAKUS SAVE THE WORLD"</div>
-    <div class="PositionGameWorld3">&emsp;&emsp;对游戏开发的热爱和追求，使我们相聚于此。涉及计算机图<br>形学的学习，我们使用物理模拟引擎Unity开发我们所追求的世界，<br>一个故事，一个角色，在我们的世界里改变现实，创造新的可能，<br>我们参与，我们改变，我们创造...</div>
+    <div class="PositionGameWorld3">  对游戏开发的热爱和追求，使我们相聚于此。涉及计算机图<br>形学的学习，我们使用物理模拟引擎Unity开发我们所追求的世界，<br>一个故事，一个角色，在我们的世界里改变现实，创造新的可能，<br>我们参与，我们改变，我们创造...</div>
 </div>
 <div class="PositionArt">
     <img src="./images/Geek_Designer.png" alt="" class="PositionArtPic">
     <div class="PositionArtWorld1">游戏美术</div>
     <div class="PositionArtWorld2">"路漫漫其修远兮，非大毅力者不能"</div>
-    <div class="PositionArtWorld3">&emsp;&emsp;通俗的说法是游戏中所能看到的一切画面都属于游戏美术，其中包括了角色、UI、场景、道具、动画、特效等。CG<br>艺术的一个分支：游戏美术。游戏美术是游戏制作的重要部<br>分的，通过各种软件引擎和技术技巧，完成相应的部分游戏制作， 各个不同岗位的游戏美术师们通力合作，才能完成一部<br>完整的游戏。</div>
+    <div class="PositionArtWorld3">  通俗的说法是游戏中所能看到的一切画面都属于游戏美术，其中包括了角色、UI、场景、道具、动画、特效等。CG<br>艺术的一个分支：游戏美术。游戏美术是游戏制作的重要部<br>分的，通过各种软件引擎和技术技巧，完成相应的部分游戏制作， 各个不同岗位的游戏美术师们通力合作，才能完成一部<br>完整的游戏。</div>
 </div>
 <div class="PositionSecurity">
     <img src="./images/Geek_security.png" alt="" class="PositionSecPic">
     <div class="PositionSecWorld1">网络安全</div>
     <div class="PositionSecWorld2">"安全是一种过程，而不是一种状态"</div>
-    <div class="PositionSecWorld3">&emsp;&emsp;网络安全是一种综合性的概念，指的是保护计算机系统、网<br>络和数据免受未经授权的访问、损坏、干扰或盗窃的威胁和攻击。<br>它涵盖了一系列措施和实践，旨在确保信息的机密性、完整性和<br>可用性。</div>
+    <div class="PositionSecWorld3">  网络安全是一种综合性的概念，指的是保护计算机系统、网<br>络和数据免受未经授权的访问、损坏、干扰或盗窃的威胁和攻击。<br>它涵盖了一系列措施和实践，旨在确保信息的机密性、完整性和<br>可用性。</div>
 </div>
 
 <!-- About区块 -->
@@ -1348,40 +1339,71 @@
 
 <!-- Answer区块 -->
 <div class="Answer">
-    <img src="./images/background_QA.png" alt="" class="AnswerPic">
     <img src="./iconfont/信息.png" alt="" class="AnswerTitlePic">
     <div class="AnswerTitle">More Questions</div>
     
-    <div id="question1" class="Question1" onclick="toggleAnswer('question1')">1.什么是Geek(极客)？Geek精神又是什么？</div>
+    <div class="AnswerPic">
+        <div class="Question" onclick="toggleTextQuestion('text1', 'Question1', 'Question2')">
+            1.什么是Geek(极客)？Geek精神又是什么？
+            <p id="text1" class="hidden" style="color: white; font-size: 32px;">拥有好奇之心，改变之力，爱钻研，能折腾。</p>
+        </div>
 
-    <!--  
-    <div class="AnswerAll" id="AnswerAll-question1">拥有好奇之心，改变之力，爱钻研，能折腾。</div>
+        <div class="Question" onclick="toggleTextQuestion('text2', 'Question2', 'Question3')">
+            2.招新是安排在什么时间？
+            <p id="text2" class="hidden" style="color: white; font-size: 32px;">按照惯例，正式招新时间是在9月下旬~10月上旬，不过今年会有一些<br>改动，笔试地点一般在9号教学楼。如果想要了解我们，可以加入我们<br>的QQ群，招新具体的安排/变动会在招新群通知。</p>
+        </div>
+
+        <div class="Question" onclick="toggleTextQuestion('text3', 'Question3', 'Question4')">
+            3.我们有考核吗？考核流程是怎样的呀？
+            <p id="text3" class="hidden" style="color: white; font-size: 32px;">嗯...我们一共有一轮笔试和两轮面试。权衡技术、经验和学习能力，第<br>一轮是一些视野性的题目，淘汰率并不高。第二轮单独面试，根据你的<br>笔试提出技术相关的问题、兴趣爱好、个人看法。最后一轮群面，首先<br>问及时间分配上的问题，其次也会向你提出各种奇怪的问题。这一轮中<br>许多题目其实并不难，也无标准答案，重在考察同学们在压力下的逻辑<br>思维。全部通过成为预备成员啦。</p>
+        </div>
+
+        <div class="Question" onclick="toggleTextQuestion('text4', 'Question4', 'Question5')">
+            4.考核是怎样的形式？
+            <p id="text4" class="hidden" style="color: white; font-size: 32px;">在考核期间每人会拥有一位'长者'带你入门，学习技术与知识，交流经<br>验与想法。完成每周的新人任务后再进行一次考核筛选后就可以成为<br>Geek组正式成员啦！在考核期必须满足每周30个小时在实验室哦,所以<br>考核期也不可以懈怠哦！</p>
+        </div>
+
+        <div class="Question" onclick="toggleTextQuestion('text5', 'Question5', 'Question6')">
+            5.进入Geek组之后都有什么福利呢？
+            <p id="text5" class="hidden" style="color: white; font-size: 32px;">一对一的新人指引，每一个成员都有会一个mentor, 带你初入门槛，与<br>你一同成长，组内管理较宽松,在尊重其他人的前提下可以尽情发挥自己<br>的个性。打破平淡，与同样疯狂的人把疯狂的idea实现，磨砺耐性、培<br>养思维、成就梦想。Lab设备/网络资源充足，闲暇之余也有组织活动。<br>更有许多的故事等你来听~</p>
+        </div>
+
+        <div class="Question" onclick="toggleTextQuestion('text6', 'Question6', 'Question7')">
+            6.进入团队会影响我的日常学习吗？
+            <p id="text6" class="hidden" style="color: white; font-size: 32px;">你要知道大学是一个可以自由安排自己学习生活的地方。如果你想在上<br>课之余充实自己、激励自己，最好的方法就是和比自己更优秀的人在一<br>起。团队不缺优秀的人，而我们也期待同样优秀的你，让我们一起前进！<br>小组里也有不少保研, 考研的前辈们, 大部分都能找到一个平衡点, 而且<br>团队的经历对你日后读研, 工作都大有裨益。</p>
+        </div>
+
+        <div class="Question" onclick="toggleTextQuestion('text7', 'Question7', 'Question8')">
+            7.老师以及学长学姐们的期望是什么?
+            <p id="text7" class="hidden" style="color: white; font-size: 32px;">我们希望你有很强的自学能力，同时关注新事物、新技术，喜欢挑战，<br>逻辑性强，善于和各种文化的人合作.“每个人都可以做自己想做的事情，<br>每个人的方向不一样。 如果你想做产品或有不错的 idea，那么就可以<br>找志同道合的人一起合作。”</p>
+    </div>
+
     <script>
-    function toggleAnswer(questionId) {
-        var answerElement = document.getElementById('AnswerAll-' + questionId);
-        var answerStyle = window.getComputedStyle(answerElement);
+        function toggleTextQuestion(textId, currentQuestionId, nextQuestionId) {
+            var textElement = document.getElementById(textId);
+            var currentQuestionElement = document.getElementById(currentQuestionId);
+            var nextQuestionElement = document.getElementById(nextQuestionId);
 
-        if (answerStyle.display === 'none') {
-        answerElement.style.display = 'block';
-        } else {
-        answerElement.style.display = 'none';
+            if (textElement.classList.contains('hidden')) {
+                textElement.classList.remove('hidden');
+                currentQuestionElement.classList.add('show-text');
+            } else {
+                textElement.classList.add('hidden');
+                currentQuestionElement.classList.remove('show-text');
+            }
+
+            if (nextQuestionElement) {
+                var currentQuestionHeight = currentQuestionElement.offsetHeight;
+                nextQuestionElement.style.marginTop = currentQuestionHeight + 'px';
+            }
         }
-    }
     </script>
-    -->
-    
-    <div class="Question2">2.招新是安排在什么时间？</div>
-    <div class="Question3">3.我们有考核吗？考核流程是怎样的呀？</div>
-    <div class="Question4">4.考核是怎样的形式？</div>
-    <div class="Question5">5.进入Geek组之后都有什么福利呢？</div>
-    <div class="Question6">6.进入团队会影响我的日常学习吗？</div>
-    <div class="Question7">7.老师以及学长学姐们的期望是什么?</div>
 </div>
 
 <!-- 备案部分 -->
 <div class="Bottom">
     <div class="BottomBox"></div>
-    <div class="BottomWorld">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;[prentending this is true⌨]<br>Copyright©2002-2022 itaweya.github.io All Right Reserved 备案号：110</div>
+    <div class="BottomWorld">          [prentending this is true⌨]<br>Copyright©2002-2022 itaweya.github.io All Right Reserved 备案号：110</div>
 </div>
-</body>
-</html>
+
+</body></html>
